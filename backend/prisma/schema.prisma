@@ -11,9 +11,51 @@ datasource db {
 }
 
 model User {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  password  String
+  name      String    @unique()
+  subjects  Subject[]
+  variants  Variant[]
+  tasks     Task[]
+}
+
+model Subject {
+  id        Int       @id @default(autoincrement())
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  user      User?     @relation(fields: [userId], references: [id])
+  userId    Int?      @map("user_id")
+  goal      Int
+  name      String
+  variants  Variant[]
+  tasks     Task[]
+}
+
+model Variant {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
-  password  String
   name      String
+  result    Int
+  subject   Subject? @relation(fields: [subjectId], references: [id])
+  subjectId Int?     @map("subject_id")
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?     @map("user_id")
+  tasks     Task[]
+}
+
+model Task {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  number    Int
+  cost      Int
+  variant   Variant? @relation(fields: [variantId], references: [id])
+  variantId Int?     @map("variant_id")
+  subject   Subject? @relation(fields: [subjectId], references: [id])
+  subjectId Int?     @map("subject_id")
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    Int?     @map("user_id")
 }
