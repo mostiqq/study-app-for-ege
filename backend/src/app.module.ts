@@ -5,9 +5,10 @@ import { UserModule } from './user/user.module'
 import { AuthModule } from './auth/auth.module'
 import { ConfigModule } from '@nestjs/config'
 import { SubjectModule } from './subject/subject.module';
+import { VariantModule } from './variant/variant.module';
 
 @Module({
-	imports: [ConfigModule.forRoot(), UserModule, AuthModule, SubjectModule],
+	imports: [ConfigModule.forRoot(), UserModule, AuthModule, SubjectModule, VariantModule],
 	controllers: [AppController],
 	providers: [AppService]
 })
