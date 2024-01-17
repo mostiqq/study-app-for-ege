@@ -22,6 +22,16 @@ export class VariantService {
 			where: {
 				id,
 				userId
+			},
+			select: {
+				id: true,
+				subjectId: true,
+				userId: true,
+				createdAt: true,
+				tasks: true,
+				result: true,
+				name: true,
+				subject: true
 			}
 		})
 
@@ -37,6 +47,16 @@ export class VariantService {
 			where: {
 				userId,
 				subjectId
+			},
+			select: {
+				id: true,
+				subjectId: true,
+				userId: true,
+				createdAt: true,
+				tasks: true,
+				result: true,
+				name: true,
+				subject: true
 			}
 		})
 

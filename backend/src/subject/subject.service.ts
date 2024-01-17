@@ -28,7 +28,8 @@ export class SubjectService {
 			select: {
 				id: true,
 				name: true,
-				goal: true
+				goal: true,
+				variants: true
 			}
 		})
 
