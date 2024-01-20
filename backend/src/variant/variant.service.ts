@@ -67,7 +67,7 @@ export class VariantService {
 		return variants
 	}
 
-	async create(userId: number, dto: VariantDto) {
+	async create(userId: number, dto: VariantDto, subjectId: number) {
 		return this.prisma.variant.create({
 			data: {
 				name: dto.name,
@@ -79,7 +79,7 @@ export class VariantService {
 				},
 				subject: {
 					connect: {
-						id: dto.subjectId
+						id: subjectId
 					}
 				}
 			}

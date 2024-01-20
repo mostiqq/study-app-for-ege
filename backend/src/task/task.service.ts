@@ -1,19 +1,30 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { PrismaService } from 'src/prisma.service'
-import { TaskDto, ValidateTaskDto } from './task.dto'
+import { TaskDto } from './task.dto'
 
 @Injectable()
 export class TaskService {
 	constructor(private prisma: PrismaService) {}
 
-	async getAll(userId: number, validateDto: ValidateTaskDto) {
-		const { variantId, subjectId } = validateDto
+	async getAll(userId: number, variantId: number) {
+		const variant = await this.prisma.variant.findUnique({
+			where: {
+				id: variantId
+			},
+			select: {
+				subjectId: true
+			}
+		})
+
+		if (!variant) {
+			throw new NotFoundException('Вариант не найден')
+		}
 
 		return this.prisma.task.findMany({
 			where: {
 				userId,
 				variantId,
-				subjectId
+				subjectId: variant.subjectId
 			},
 			select: {
 				id: true,
@@ -26,8 +37,20 @@ export class TaskService {
 		})
 	}
 
-	async create(userId: number, dto: TaskDto & ValidateTaskDto) {
-		const { subjectId, variantId } = dto
+	async create(userId: number, dto: TaskDto, variantId: number) {
+		const variant = await this.prisma.variant.findUnique({
+			where: {
+				id: variantId
+			},
+			select: {
+				subjectId: true
+			}
+		})
+
+		if (!variant) {
+			throw new NotFoundException('Вариант не найден')
+		}
+
 		return this.prisma.task.create({
 			data: {
 				number: dto.number,
@@ -39,7 +62,7 @@ export class TaskService {
 				},
 				subject: {
 					connect: {
-						id: subjectId
+						id: variant.subjectId
 					}
 				},
 				variant: {

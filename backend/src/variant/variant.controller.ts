@@ -44,9 +44,13 @@ export class VariantController {
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
 	@Auth()
-	@Post()
-	async create(@CurrentUser('id') userId: number, @Body() dto: VariantDto) {
-		return this.variantService.create(userId, dto)
+	@Post('by-subject/:subjectId')
+	async create(
+		@CurrentUser('id') userId: number,
+		@Body() dto: VariantDto,
+		@Param('subjectId') subjectId: string
+	) {
+		return this.variantService.create(userId, dto, +subjectId)
 	}
 
 	@UsePipes(new ValidationPipe())
