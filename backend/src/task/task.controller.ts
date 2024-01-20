@@ -13,31 +13,32 @@ import {
 import { TaskService } from './task.service'
 import { Auth } from 'src/auth/decorators/auth.decorator'
 import { CurrentUser } from 'src/auth/decorators/user.decorator'
-import { TaskDto, ValidateTaskDto } from './task.dto'
+import { TaskDto } from './task.dto'
 
 @Controller('tasks')
 export class TaskController {
 	constructor(private readonly taskService: TaskService) {}
 
 	@UsePipes(new ValidationPipe())
-	@Get()
+	@Get('by-variant/:variantId')
 	@Auth()
 	async getAll(
 		@CurrentUser('id') userId: number,
-		@Body() validateDto: ValidateTaskDto
+		@Param('variantId') variantId: string
 	) {
-		return this.taskService.getAll(userId, validateDto)
+		return this.taskService.getAll(userId, +variantId)
 	}
 
 	@UsePipes(new ValidationPipe())
 	@HttpCode(200)
 	@Auth()
-	@Post()
+	@Post('by-variant/:variantId')
 	async create(
 		@CurrentUser('id') userId: number,
-		@Body() dto: TaskDto & ValidateTaskDto
+		@Body() dto: TaskDto,
+		@Param('variantId') variantId: string
 	) {
-		return this.taskService.create(userId, dto)
+		return this.taskService.create(userId, dto, +variantId)
 	}
 
 	@UsePipes(new ValidationPipe())

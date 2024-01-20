@@ -6,7 +6,4 @@ export class VariantDto {
 
 	@IsNumber()
 	result: number
-
-	@IsNumber()
-	subjectId: number
 }
