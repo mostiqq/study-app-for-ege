@@ -1,3 +1,4 @@
+'use client'
 import { useEffect, type PropsWithChildren } from 'react'
 import { TypeComponentAuthFields } from './auth-page.types'
 import dynamic from 'next/dynamic'

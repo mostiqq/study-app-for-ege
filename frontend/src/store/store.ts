@@ -1,5 +1,5 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import persistReducer, {
+import {
 	FLUSH,
 	PAUSE,
 	PERSIST,
@@ -8,22 +8,14 @@ import persistReducer, {
 	REHYDRATE
 } from 'redux-persist'
 import persistStore from 'redux-persist/es/persistStore'
-import storage from 'redux-persist/lib/storage'
 import { userSlice } from './user/user.slice'
-
-const persistConfig = {
-	key: 'study-app',
-	storage
-}
 
 const rootReducer = combineReducers({
 	user: userSlice.reducer
 })
-//@ts-ignore
-const persistedReducer = persistReducer(persistConfig, rootReducer)
 
 export const store = configureStore({
-	reducer: persistedReducer,
+	reducer: rootReducer,
 	middleware: getDefaultMiddleware =>
 		getDefaultMiddleware({
 			serializableCheck: {

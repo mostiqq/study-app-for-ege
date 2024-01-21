@@ -7,7 +7,7 @@ export const getAccessToken = async () => {
 }
 
 export const getUserFromStorage = () => {
-	return JSON.parse(localStorage.getItem('user') || '{}')
+	return JSON.parse(JSON.stringify(localStorage.getItem('user')) || '{}')
 }
 
 export const saveTokensStorage = (data: ITokens) => {
