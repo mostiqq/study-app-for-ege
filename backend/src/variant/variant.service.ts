@@ -13,6 +13,19 @@ export class VariantService {
 			},
 			orderBy: {
 				createdAt: 'desc'
+			},
+			select: {
+				id: true,
+				subject: {
+					select: {
+						name: true
+					}
+				},
+				createdAt: true,
+				name: true,
+				result: true,
+				subjectId: true,
+				userId: true
 			}
 		})
 	}

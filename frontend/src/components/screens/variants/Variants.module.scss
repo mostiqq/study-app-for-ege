@@ -1,0 +1,37 @@
+.main {
+	padding: 50px 30px;
+	display: flex;
+	flex-direction: column;
+
+	.bl {
+		margin-bottom: 40px;
+		align-self: center;
+	}
+
+	.link {
+		background-color: blue;
+		color: #fff;
+		padding: 12px 24px;
+		border-radius: 10px;
+	}
+
+	> h2 {
+		font-size: 40px;
+		font-weight: 700;
+		margin-bottom: 70px;
+		text-align: center;
+	}
+
+	.span {
+		font-size: 20px;
+		margin-bottom: 20px;
+	}
+
+	.flex {
+		gap: 25px;
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-bottom: 40px;
+	}
+}

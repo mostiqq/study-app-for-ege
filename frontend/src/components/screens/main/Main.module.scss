@@ -1,0 +1,32 @@
+.main {
+	padding: 100px 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	> h2 {
+		font-size: 40px;
+		font-weight: 700;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.btnGroup {
+		display: flex;
+		align-items: center;
+		gap: 50px;
+		margin-bottom: 50px;
+		> a {
+			background-color: blue;
+			color: #fff;
+			padding: 12px 24px;
+			border-radius: 13px;
+		}
+	}
+
+	.input {
+		width: 500px;
+		margin-bottom: 20px;
+	}
+}

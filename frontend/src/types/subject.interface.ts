@@ -23,3 +23,7 @@ export interface ISubjectResponse {
 	goal: number
 	name: string
 }
+
+export interface ISubjectName {
+	name: string
+}
