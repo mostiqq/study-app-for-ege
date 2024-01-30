@@ -45,3 +45,24 @@ export const userSlice = createSlice({
 			})
 	}
 })
+
+export const getAllSubj = () => {
+	const data = [
+		{
+			id: 3,
+			name: 'Математика',
+			goal: 90
+		},
+		{
+			id: 9,
+			name: 'Информатика',
+			goal: 100
+		},
+		{
+			id: 10,
+			name: 'Русский язык',
+			goal: 100
+		}
+	]
+	return data
+}

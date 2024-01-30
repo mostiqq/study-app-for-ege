@@ -20,9 +20,8 @@ export class SubjectController {
 	constructor(private readonly subjectService: SubjectService) {}
 
 	@Get()
-	@Auth()
-	async getAll(@CurrentUser('id') id: number) {
-		return this.subjectService.getAll(id)
+	async getAll() {
+		return this.subjectService.getAll(2)
 	}
 
 	@Get(':id')

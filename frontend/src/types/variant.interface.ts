@@ -1,4 +1,4 @@
-import { ISubjectResponse } from './subject.interface'
+import { ISubjectName, ISubjectResponse } from './subject.interface'
 import { ITask } from './task.interface'
 
 export interface IVariant {
@@ -9,6 +9,16 @@ export interface IVariant {
 	result: number
 	subjectId: number
 	userId: number
+}
+
+export interface IVariantResponse {
+	id: number
+	createdAt: string
+	name: string
+	result: number
+	subjectId: number
+	userId: number
+	subject: ISubjectName
 }
 
 export interface IVariantFull {

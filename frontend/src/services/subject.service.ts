@@ -8,7 +8,7 @@ import {
 
 class SubjectService {
 	async getAll() {
-		return instance<ISubject[]>({
+		return await instance<ISubject[]>({
 			url: `/subjects`,
 			method: 'GET'
 		})
