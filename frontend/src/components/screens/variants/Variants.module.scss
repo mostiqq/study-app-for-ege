@@ -34,4 +34,59 @@
 		flex-wrap: wrap;
 		margin-bottom: 40px;
 	}
+
+	.addMain {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 15px;
+	}
+
+	.add {
+		font-size: 20px;
+		font-weight: 700;
+		margin-bottom: 20px;
+		text-align: center;
+	}
+
+	.result {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 15px;
+
+		.resSpan {
+			font-size: 20px;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.resLink {
+			background-color: blue;
+			padding: 12px 24px;
+			border-radius: 13px;
+			font-size: 17px;
+			font-weight: 500;
+			color: white;
+			width: 100%;
+			text-align: center;
+		}
+	}
+
+	.special {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		gap: 20px;
+
+		.titleSpecial {
+			font-size: 20px;
+			font-weight: 700;
+			text-align: center;
+		}
+	}
+
+	.disabled {
+		display: none;
+	}
 }
