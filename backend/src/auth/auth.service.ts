@@ -22,19 +22,6 @@ export class AuthService {
 		}
 	}
 
-	private async issueTokens(userId: number) {
-		const data = { id: userId }
-		const accessToken = this.jwt.sign(data, {
-			expiresIn: '1h'
-		})
-
-		const refreshToken = this.jwt.sign(data, {
-			expiresIn: '7d'
-		})
-
-		return { accessToken, refreshToken }
-	}
-
 	private async validateUser(dto: AuthDto) {
 		const user = await this.prisma.user.findUnique({
 			where: {
@@ -91,6 +78,19 @@ export class AuthService {
 			user: this.returnUserFields(user),
 			...tokens
 		}
+	}
+
+	private async issueTokens(userId: number) {
+		const data = { id: userId }
+		const accessToken = this.jwt.sign(data, {
+			expiresIn: '1h'
+		})
+
+		const refreshToken = this.jwt.sign(data, {
+			expiresIn: '7d'
+		})
+
+		return { accessToken, refreshToken }
 	}
 
 	async getNewTokens(refreshToken: string) {
